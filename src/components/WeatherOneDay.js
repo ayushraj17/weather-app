@@ -5,8 +5,9 @@ import React from "react";
 // import { ReactComponent as ShowerRain } from "../static/rainy-3.svg";
 // import { ReactComponent as Snowy } from "../static/snowy-6.svg";
 // import { ReactComponent as Sunny } from "../static/day.svg";
-import Bounce from "react-reveal/Bounce";
 import { WiThermometer, WiHumidity } from "react-icons/wi";
+import { Fade } from "react-awesome-reveal";
+
 const WeatherOneDay = ({ weather, temp, humid, day, icon, onWeatherClick }) => {
 	// const renderIcons = () => {
 	// 	//For selecting appropriate rain icon
@@ -31,7 +32,7 @@ const WeatherOneDay = ({ weather, temp, humid, day, icon, onWeatherClick }) => {
 	// 	else return
 	// };
 	return (
-		<Bounce>
+		<Fade delay="500" cascade="true">
 			<div
 				onClick={() => onWeatherClick(day.slice(0, 10))}
 				className=" cursor-pointer my-3  md:mx-0 md:my-8 bg-white grid  sm:-mx-12 md:gap-0 md:grid-cols-2 lg:h-40 lg:w-40 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 hover:shadow-lg rounded-lg"
@@ -56,7 +57,7 @@ const WeatherOneDay = ({ weather, temp, humid, day, icon, onWeatherClick }) => {
 					{humid}
 				</div>
 			</div>
-		</Bounce>
+		</Fade>
 	);
 };
 

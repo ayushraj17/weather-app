@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherOneDay from "./WeatherOneDay";
-import Slide from "react-reveal/Slide";
+// import { Slide, Tada } from "react-awesome-reveal";
+// import Slide from "react-reveal/Slide";
 
 import WeatherByHours from "./WeatherByHours";
+// import styled, { keyframes } from "styled-components";
+// import SlideOutUp from "@bit/formidablelabs.react-animations.slide-out-up";
+// const SlideOutUpAnimation = keyframes`${SlideOutUp}`;
+// const SlideOutUpDiv = styled.div`
+// 	animation: infinite 5s ${SlideOutUpAnimation};
+// `;
+
+// const Slide = require("react-reveal/Slide");
 
 const WeatherDisplay = ({ query }) => {
 	const API = "3bc7c8b19aee443e88577d2e81b31e0b";
@@ -61,16 +70,15 @@ const WeatherDisplay = ({ query }) => {
 			.filter((day) => day.dt_txt.startsWith(date))
 			.map((day) => {
 				return (
-					<Slide top>
-						<WeatherByHours
-							temp={day.main.temp}
-							humid={day.main.humidity}
-							weather={day.weather.map((day) => day.description)}
-							icon={day.weather.map((day) => day.icon)}
-							day={day.dt_txt}
-							key={day.main.temp}
-						/>
-					</Slide>
+					// <Tada direction="left" cascade="true" damping="5000" delay="500">
+					<WeatherByHours
+						temp={day.main.temp}
+						humid={day.main.humidity}
+						weather={day.weather.map((day) => day.description)}
+						icon={day.weather.map((day) => day.icon)}
+						day={day.dt_txt}
+						key={day.main.temp}
+					/>
 				);
 			});
 	};
