@@ -26,7 +26,7 @@ const WeatherDisplay = ({ query }) => {
 		const fetchData = async () => {
 			// setIsLoading(true);
 			const result = await axios(
-				`http://api.openweathermap.org/data/2.5/forecast/?q=${query}&units=metric&appid=${API}`
+				`https://api.openweathermap.org/data/2.5/forecast/?q=${query}&units=metric&appid=${API}`
 			);
 
 			setData(result.data.list);
