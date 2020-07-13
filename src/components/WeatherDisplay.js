@@ -13,13 +13,17 @@ import WeatherByHours from "./WeatherByHours";
 // `;
 
 // const Slide = require("react-reveal/Slide");
-
+// let d = new Date();
+// d = d.toDateString().slice(8);
 const WeatherDisplay = ({ query }) => {
 	const API = "3bc7c8b19aee443e88577d2e81b31e0b";
 	const [data, setData] = useState([]);
-	const [show, setShow] = useState(false);
+	// const [show, setShow] = useState(false);
 	// const [fiveDays, setFiveDays] = useState([1, 2, 3, 4, 5, 6]);
-	const [date, getDate] = useState("");
+	const [date, getDate] = useState(
+		!data === [] ? data[0].dt_txt.slice(0, 10) : ""
+	);
+	// !date === "" ? setShow(true) : setShow(false);
 	// const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
@@ -55,7 +59,6 @@ const WeatherDisplay = ({ query }) => {
 						// onClick={() => setFiveDays(day)}
 						onWeatherClick={(currentDay) => {
 							getDate(currentDay);
-							setShow(true);
 						}}
 						// onWeatherClick={(date) => {
 						// 	setFiveDays([]);
@@ -65,6 +68,7 @@ const WeatherDisplay = ({ query }) => {
 				);
 			});
 	};
+
 	const renderDay = () => {
 		return data
 			.filter((day) => day.dt_txt.startsWith(date))
@@ -88,17 +92,17 @@ const WeatherDisplay = ({ query }) => {
 			<div className=" sm:px-4 md:h-56 flex flex-wrap flex-shrink  content-between gap-1 sm:flex-grow md:flex-grow-0 w-full sm:flex-col md:flex-row bg-blue-100  rounded-lg items-center  justify-evenly md:justify-around ">
 				{renderList()}
 			</div>
-			{show && (
+			{
 				<div class="grid  divide-x my-2 py-2 bg-blue-200 rounded-lg shadow-lg justify-center content-center align-center  divide-blue-400 ">
 					<div class="text-center m-auto flex">
-						<div className="md:col-span-2 m-auto font-mono md:text-lg font-semibold md:tracking-widest text-gray-700 text-shadow-lg ">
-							Hourly forecast for {date.slice(5, 10)}
+						<div className=" md:col-span-2 m-auto font-mono md:text-lg font-semibold md:tracking-widest text-gray-700 text-shadow-lg ">
+							Hourly forecast for {date === "" ? "Today" : date.slice(5, 10)}
 						</div>
 						<div className="text-center m-auto"></div>
 					</div>
 				</div>
-			)}
-			{show && renderDay()}
+			}
+			{renderDay()}
 		</div>
 	);
 };
