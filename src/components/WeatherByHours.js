@@ -1,6 +1,6 @@
 import React from "react";
 import { WiThermometer, WiHumidity } from "react-icons/wi";
-import { Slide, Tada } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
 
 const WeatherByHours = ({ temp, humid, weather, icon, day }) => {
 	return (

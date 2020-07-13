@@ -20,18 +20,18 @@ const WeatherDisplay = ({ query }) => {
 	const [show, setShow] = useState(false);
 	// const [fiveDays, setFiveDays] = useState([1, 2, 3, 4, 5, 6]);
 	const [date, getDate] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
+	// const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			setIsLoading(true);
+			// setIsLoading(true);
 			const result = await axios(
 				`http://api.openweathermap.org/data/2.5/forecast/?q=${query}&units=metric&appid=${API}`
 			);
 
 			setData(result.data.list);
 
-			setIsLoading(!true);
+			// setIsLoading(!true);
 		};
 		if (!query) {
 			return undefined;
